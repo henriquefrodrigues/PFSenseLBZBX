@@ -39,6 +39,15 @@ function getStatusGateways($nome = '',$item){
         return 'ZBX_NOTSUPPORTED';
     }
 
+    // Se gateway não existe no retorno = considera UNKNOWN
+    if (!isset($gateways_status[$nome])) {
+        if ($item == 'status') {
+            return 4; // Código para UNKNOWN
+        } else {
+            return 'ZBX_NOTSUPPORTED';
+        }
+    }
+
     if ($item=='status'){
         if ($gateways_status[$nome][$item] == "none" ){
             return $gateways_status[$nome][$item] = 1;
