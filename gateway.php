@@ -42,7 +42,7 @@ function getStatusGateways($nome = '',$item){
     // Se gateway não existe no retorno = considera UNKNOWN
     if (!isset($gateways_status[$nome])) {
         if ($item == 'status') {
-            return 4; // Código para UNKNOWN
+            return 0; // Código para apontar indisponibilidade no zabbix
         } else {
             return 'ZBX_NOTSUPPORTED';
         }
